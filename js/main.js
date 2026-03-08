@@ -1,10 +1,14 @@
+let allIssues = []; 
+
 async function loadIssues() {
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await res.json();
 
     console.log(data);
 
-    displayIssues(data.data);
+    allIssues = data.data;
+    displayIssues(allIssues);
+    updateIssueCount(allIssues);
 }
 
 loadIssues();
@@ -27,12 +31,14 @@ function displayIssues(issues) {
 
         const card = document.createElement("div");
 
-        // priority কে lowercase এ convert করুন
+
         const priority = issue.priority.toLowerCase();
 
-        // border color logic based on priority
+        
+
+        // border color logic based on STATUS
         const borderColor =
-            (priority === "high" || priority === "medium")
+            issue.status === "open"
                 ? "border-green-500"
                 : "border-purple-500";
 
@@ -50,7 +56,7 @@ function displayIssues(issues) {
                     ? "badge badge-soft badge-warning text-[#F59E0B]"
                     : "badge badge-ghost text-[#9CA3AF]";
 
-        // labels থেকে dynamically badges তৈরি করুন
+        // labels  dynamically badges 
         const labelsBadges = issue.labels
             .map(label => {
 
@@ -111,4 +117,33 @@ function displayIssues(issues) {
         container.appendChild(card);
 
     });
+}
+
+// Issue count update function
+function updateIssueCount(issues) {
+    const countIssue = document.getElementById("issueCount");
+    countIssue.innerText = issues.length;
+}
+
+// Filter function with button ID parameter
+function filterIssues(type, buttonId) {
+    let filtered;
+
+    if (type === "open") {
+        filtered = allIssues.filter(issue => issue.status === "open");
+    } else if (type === "closed") {
+        filtered = allIssues.filter(issue => issue.status === "closed");
+    } else {
+        filtered = allIssues;
+    }
+
+    // Button active logic
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("btn-primary");
+    });
+
+    document.getElementById(buttonId).classList.add("btn-primary");
+
+    displayIssues(filtered);
+    updateIssueCount(filtered);
 }

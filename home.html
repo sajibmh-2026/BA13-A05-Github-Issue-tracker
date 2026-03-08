@@ -51,8 +51,6 @@
                     <div>
                         <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
                     </div>
-
-
                 </div>
             </div>
             </div>
@@ -63,12 +61,22 @@
 
     <main class="w-[80%] mx-auto space-y-9">
 
-        <section class="bg-base-100 shadow-md">
-            <div class="flex gap-4 p-5"> <button class="btn btn-primary px-6">All</button>
-                <button class="btn">Open</button>
-                <button class="btn">Closed</button>
-            </div>
-        </section>
+        <!-- buttons tab  -->
+        <div class="flex gap-4 p-5">
+
+            <button id="allBtn" class="btn btn-primary filter-btn" onclick="filterIssues('all','allBtn')">
+                All
+            </button>
+
+            <button id="openBtn" class="btn filter-btn" onclick="filterIssues('open','openBtn')">
+                Open
+            </button>
+
+            <button id="closedBtn" class="btn filter-btn" onclick="filterIssues('closed','closedBtn')">
+                Closed
+            </button>
+
+        </div>
 
 
 
@@ -79,7 +87,7 @@
                         <img src="assets/Aperture.png" alt="">
                     </div>
                     <div>
-                        <p class="font-bold">50 Issues</p>
+                        <p class="font-bold"> <span id="issueCount">50</span> Issues</p>
                         <p class="text-[#64748B]">Track and manage your project issues</p>
                     </div>
                 </div>
@@ -101,11 +109,12 @@
             <div id="issueContainer" class="grid grid-cols-4 gap-4 mt-6"></div>
 
 
-          
+
 
         </section>
 
     </main>
+    <img src="assets/closed-status.png" alt="">
 
 
     <!-- javascript link -->
