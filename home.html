@@ -13,23 +13,57 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
+
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
     <style>
-        *{
-         font-family: "Geist", sans-serif;
+        * {
+            font-family: "Geist", sans-serif;
         }
     </style>
 </head>
 
 <body>
+    <header>
+        <nav>
+            <div class="navbar bg-base-100 shadow-sm justify-around">
+                <div class="flex-1">
+                    <div class="flex">
+                        <img class="w-9" src="assets/github-logo.png" alt="">
+                        <a class="btn btn-ghost text-xl">GitHub Issues Tracker</a>
+                    </div>
 
-  <!-- javascript link -->
-   <script src="js/main.js"></script>
+                </div>
+                <div class="flex gap-2">
+     
+                    <div class="relative">
+                        <!-- Icon -->
+                        <i
+                            class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+                        <!-- Input -->
+                        <input type="text" placeholder="Search issues..."
+                            class="w-full border border-gray-300 rounded-md p-2 pl-10">
+                    </div>
+                    <div>
+                        <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+                    </div>
+
+
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+    <!-- javascript link -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
