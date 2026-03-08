@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub | Login</title>
+  <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
+  <!-- daisyUI + talwind -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: "Geist", sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+
+
+  <div class="bg-white p-8 rounded-xl shadow-md w-96 my-20">
+
+    <img src="assets/github-logo.png" alt="" class="w-24 mx-auto mb-4">
+    <h2 class="text-2xl font-bold text-center mb-2">
+      GitHub Issues Tracker
+    </h2>
+
+    <p class="text-center text-gray-500 mb-6">
+      Sign in to manage your issues
+    </p>
+    <label class="font-medium" for="Username">Username</label>
+    <input id="user-input" type="text" placeholder="Enter Username" name="Username" id="Username"
+      class="w-full border border-gray-300 rounded-md p-2">
+    <p class="text-blue-600 mb-4">Default: admin</p>
+
+    <label class="font-medium" for="password">Password</label>
+    <input id="password-input" type="password" placeholder="Enter Password" name="password" id="password"
+      class="w-full border border-gray-300 rounded-md p-2">
+    <p class="text-blue-600 mb-4">Default: admin123</p>
+
+    <button id="signup-btn" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">
+      Sign In
+    </button>
+
+    <div class="flex items-center my-4">
+      <div class="grow border-t border-gray-400"></div>
+      <span class="mx-4 shrink text-gray-500 font-medium">OR</span>
+      <div class="grow border-t border-gray-400"></div>
+    </div>
+
+    <p class="text-[#64748B] text-center mb-2">Demo Credentials:</p>
+    <div class="bg-[#F8FAFC] p-8 text-center">
+      <div>
+        <p><span class="font-bold">Username:</span> admin</p>
+        <p><span class="font-bold">Password:</span> admin123</p>
+      </div>
+</div>
+
+</div>
+
+
+
+
+
+  <!-- javascript link -->
+  <script src="js/login.js"></script>
+
+</body>
+
+</html>
