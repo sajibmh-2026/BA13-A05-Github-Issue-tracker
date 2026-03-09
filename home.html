@@ -45,7 +45,8 @@
                             class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
 
                         <!-- Input -->
-                        <input type="text" placeholder="Search issues..."
+                         
+                        <input id="searchInput" type="text" placeholder="Search issues..."
                             class="w-full border border-gray-300 rounded-md p-2 pl-10">
                     </div>
                     <div>
@@ -114,8 +115,53 @@
         </section>
 
     </main>
-    <img src="assets/closed-status.png" alt="">
 
+    <!-- modal style from daisy UI -->
+<dialog id="issueModal" class="modal">
+  <div class="modal-box max-w-2xl">
+
+    <!-- Title -->
+    <h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
+
+    <!-- Status + author + date -->
+    <div class="flex items-center gap-3 text-sm mb-4">
+      <span id="modalStatus" class="badge badge-success"></span>
+      <span class="text-gray-500">
+        Opened by <span id="modalAuthor"></span> • 
+        <span id="modalDate"></span>
+      </span>
+    </div>
+
+    <!-- Labels -->
+    <div id="modalLabels" class="flex gap-2 mb-4 flex-wrap"></div>
+
+    <!-- Description -->
+    <p id="modalDescription" class="text-gray-600 mb-6"></p>
+
+    <!-- Assignee + Priority -->
+    <div class="flex justify-between mb-6">
+
+      <div>
+        <p class="text-sm text-gray-400">Assignee:</p>
+        <p id="modalAssignee" class="font-semibold"></p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-400">Priority:</p>
+        <span id="modalPriority" class="badge badge-error"></span>
+      </div>
+
+    </div>
+
+    <!-- Close Button -->
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn btn-primary">Close</button>
+      </form>
+    </div>
+
+  </div>
+</dialog>
 
     <!-- javascript link -->
     <script src="js/main.js"></script>

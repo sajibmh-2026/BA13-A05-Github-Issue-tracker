@@ -1,4 +1,4 @@
-let allIssues = []; 
+let allIssues = [];
 
 async function loadIssues() {
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
@@ -34,7 +34,7 @@ function displayIssues(issues) {
 
         const priority = issue.priority.toLowerCase();
 
-        
+
 
         // border color logic based on STATUS
         const borderColor =
@@ -44,7 +44,7 @@ function displayIssues(issues) {
 
         // status icon logic based on priority
         const statusIcon =
-            (priority === "high" || priority === "medium")
+            issue.status === "open"
                 ? "assets/Open-Status.png"
                 : "assets/closed-status.png";
 
@@ -114,9 +114,13 @@ function displayIssues(issues) {
         </div>
         `;
 
+        card.addEventListener("click", () => {
+            openIssueModal(issue.id);
+        });
         container.appendChild(card);
 
     });
+
 }
 
 // Issue count update function
@@ -146,4 +150,35 @@ function filterIssues(type, buttonId) {
 
     displayIssues(filtered);
     updateIssueCount(filtered);
+}
+
+
+// search liklei search hobe
+// search input event
+document.getElementById("searchInput").addEventListener("keyup", searchIssues);
+
+async function searchIssues() {
+
+    const searchText = document.getElementById("searchInput").value.trim();
+
+    // যদি input empty হয় → সব issue দেখাবে
+    if (searchText === "") {
+        displayIssues(allIssues);
+        updateIssueCount(allIssues);
+        return;
+    }
+
+    try {
+
+        const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`);
+        const data = await res.json();
+
+        const issues = data.data;
+
+        displayIssues(issues);
+        updateIssueCount(issues);
+
+    } catch (error) {
+        console.log("Search error:", error);
+    }
 }
