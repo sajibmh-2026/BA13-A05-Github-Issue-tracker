@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GitHub Issues Tracker</title>
+    <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
+
     <!-- daisyUI + talwind -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,152 +26,128 @@
     </style>
 </head>
 
-<body>
+<body class="bg-gray-50">
     <header>
         <nav>
-            <div class="navbar bg-base-100 shadow-sm justify-around mb-9">
-                <div class="flex-1">
-                    <div class="flex">
+            <div class="navbar bg-base-100 shadow-sm mb-9 flex-wrap gap-3 px-4">
+                <div class="flex-1 min-w-fit">
+                    <div class="flex items-center gap-2">
                         <img class="w-9" src="assets/github-logo.png" alt="">
                         <a class="btn btn-ghost text-xl">GitHub Issues Tracker</a>
                     </div>
-
                 </div>
-                <div class="flex gap-2">
-
+                <div class="flex flex-wrap gap-2">
                     <div class="relative">
                         <!-- Icon -->
                         <i
                             class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
 
                         <!-- Input -->
-                         
                         <input id="searchInput" type="text" placeholder="Search issues..."
-                            class="w-full border border-gray-300 rounded-md p-2 pl-10">
+                            class="w-full md:w-64 border border-gray-300 rounded-md p-2 pl-10">
                     </div>
                     <div>
-                        <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+                        <button class="btn btn-primary btn-sm md:btn-md"><i class="fa-solid fa-plus"></i> New
+                            Issue</button>
                     </div>
                 </div>
-            </div>
             </div>
         </nav>
     </header>
 
     <!-- main section -->
-
-    <main class="w-[80%] mx-auto space-y-9">
+    <main class="w-[95%] md:w-[90%] lg:w-[80%] mx-auto space-y-6 md:space-y-9 px-2 md:px-0">
 
         <!-- buttons tab  -->
-        <div class="flex gap-4 p-5">
-
-            <button id="allBtn" class="btn btn-primary filter-btn" onclick="filterIssues('all','allBtn')">
+        <div class="flex gap-3 md:gap-4 p-3 md:p-5 flex-wrap">
+            <button id="allBtn" class="btn btn-sm md:btn-md btn-primary filter-btn"
+                onclick="filterIssues('all','allBtn')">
                 All
             </button>
 
-            <button id="openBtn" class="btn filter-btn" onclick="filterIssues('open','openBtn')">
+            <button id="openBtn" class="btn btn-sm md:btn-md filter-btn" onclick="filterIssues('open','openBtn')">
                 Open
             </button>
 
-            <button id="closedBtn" class="btn filter-btn" onclick="filterIssues('closed','closedBtn')">
+            <button id="closedBtn" class="btn btn-sm md:btn-md filter-btn" onclick="filterIssues('closed','closedBtn')">
                 Closed
             </button>
-
         </div>
 
-
-
-        <section class="bg-base-100 shadow-md p-4">
-            <div class="parrent flex justify-between">
+        <section class="bg-base-100 shadow-md p-4 md:p-6 rounded-lg">
+            <div class="parrent flex flex-col md:flex-row justify-between gap-4 md:gap-0">
                 <div class="flex gap-2 items-center">
                     <div>
-                        <img src="assets/Aperture.png" alt="">
+                        <img src="assets/Aperture.png" alt="" class="w-8 md:w-10">
                     </div>
                     <div>
-                        <p class="font-bold"> <span id="issueCount">50</span> Issues</p>
-                        <p class="text-[#64748B]">Track and manage your project issues</p>
+                        <p class="font-bold text-base md:text-lg"> <span id="issueCount">50</span> Issues</p>
+                        <p class="text-[#64748B] text-sm">Track and manage your project issues</p>
                     </div>
                 </div>
 
-
-                <div class="flex gap-4">
+                <div class="flex gap-3 md:gap-4">
                     <div class="flex items-center gap-2">
-                        <img src="assets/Ellipse 2.png" alt="" class="w-4 h-4">
-                        <p>Open</p>
+                        <img src="assets/Ellipse 2.png" alt="" class="w-3 md:w-4 h-3 md:h-4">
+                        <p class="text-sm">Open</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <img src="assets/Ellipse 2 (1).png" alt="" class="w-4 h-4">
-                        <p>Closed</p>
+                        <img src="assets/Ellipse 2 (1).png" alt="" class="w-3 md:w-4 h-3 md:h-4">
+                        <p class="text-sm">Closed</p>
                     </div>
                 </div>
             </div>
 
+            <!-- loding spinner -->
+            <div id="loadingSpinner" class="flex justify-center items-center py-20">
+                <span class="loading loading-spinner loading-lg text-primary"></span>
+            </div>
+
             <!-- issue card container -->
-            <div id="issueContainer" class="grid grid-cols-4 gap-4 mt-6"></div>
-
-
-
+            <div id="issueContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6"></div>
 
         </section>
 
     </main>
 
     <!-- modal style from daisy UI -->
-<dialog id="issueModal" class="modal">
-  <div class="modal-box max-w-2xl">
+    <dialog id="issueModal" class="modal">
+        <div class="modal-box max-w-2xl">
 
-    <!-- Title -->
-    <h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
+            <h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
 
-    <!-- Status + author + date -->
-    <div class="flex items-center gap-3 text-sm mb-4">
-      <span id="modalStatus" class="badge badge-success"></span>
-      <span class="text-gray-500">
-        Opened by <span id="modalAuthor"></span> • 
-        <span id="modalDate"></span>
-      </span>
-    </div>
+            <div class="flex items-center gap-3 text-sm mb-4 flex-wrap">
+                <span id="modalStatus" class="badge badge-success"></span>
+                <span class="text-gray-500">
+                    Opened by <span id="modalAuthor"></span> •
+                    <span id="modalDate"></span>
+                </span>
+            </div>
 
-    <!-- Labels -->
-    <div id="modalLabels" class="flex gap-2 mb-4 flex-wrap"></div>
+            <div id="modalLabels" class="flex gap-2 mb-4 flex-wrap"></div>
 
-    <!-- Description -->
-    <p id="modalDescription" class="text-gray-600 mb-6"></p>
+            <p id="modalDescription" class="text-gray-600 mb-6"></p>
 
-    <!-- Assignee + Priority -->
-    <div class="flex justify-between mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div>
+                    <p class="text-sm text-gray-400">Assignee:</p>
+                    <p id="modalAssignee" class="font-semibold"></p>
+                </div>
 
-      <div>
-        <p class="text-sm text-gray-400">Assignee:</p>
-        <p id="modalAssignee" class="font-semibold"></p>
-      </div>
+                <div>
+                    <p class="text-sm text-gray-400">Priority:</p>
+                    <span id="modalPriority" class="badge badge-error"></span>
+                </div>
+            </div>
 
-      <div>
-        <p class="text-sm text-gray-400">Priority:</p>
-        <span id="modalPriority" class="badge badge-error"></span>
-      </div>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-primary">Close</button>
+                </form>
+            </div>
 
-    </div>
-
-    <!-- Close Button -->
-    <div class="modal-action">
-      <form method="dialog">
-        <button class="btn btn-primary">Close</button>
-      </form>
-    </div>
-
-  </div>
-</dialog>
-
-<!-- loding spinner -->
-<div id="loadingSpinner" class="flex justify-center items-center py-20">
-    <span class="loading loading-spinner loading-lg text-primary"></span>
-</div>
-
-
-<div id="issueContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-    
-</div>
+        </div>
+    </dialog>
 
     <!-- javascript link -->
     <script src="js/main.js"></script>
