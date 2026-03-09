@@ -6,14 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GitHub | Login</title>
   <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
-  <!-- daisyUI + talwind -->
+  
+  <!-- daisyUI + tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
   <!-- font awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- google font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,55 +26,63 @@
   </style>
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
 
+  <div class="bg-white p-6 md:p-8 rounded-xl shadow-md w-full max-w-md">
 
-
-  <div class="bg-white p-8 rounded-xl shadow-md w-96 my-20">
-
-    <img src="assets/github-logo.png" alt="" class="w-24 mx-auto mb-4">
-    <h2 class="text-2xl font-bold text-center mb-2">
+    <img src="assets/github-logo.png" alt="GitHub Logo" class="w-20 md:w-24 mx-auto mb-4">
+    
+    <h2 class="text-xl md:text-2xl font-bold text-center mb-2">
       GitHub Issues Tracker
     </h2>
 
-    <p class="text-center text-gray-500 mb-6">
+    <p class="text-center text-gray-500 text-sm md:text-base mb-6">
       Sign in to manage your issues
     </p>
-    <label class="font-medium" for="Username">Username</label>
-    <input id="user-input" type="text" placeholder="Enter Username" name="Username" id="Username"
-      class="w-full border border-gray-300 rounded-md p-2">
-    <p class="text-blue-600 mb-4">Default: admin</p>
 
-    <label class="font-medium" for="password">Password</label>
-    <input id="password-input" type="password" placeholder="Enter Password" name="password" id="password"
-      class="w-full border border-gray-300 rounded-md p-2">
-    <p class="text-blue-600 mb-4">Default: admin123</p>
+    <!-- Username -->
+    <label class="font-medium block mb-2" for="user-input">Username</label>
+    <input 
+      id="user-input" 
+      type="text" 
+      placeholder="Enter Username" 
+      class="w-full border border-gray-300 rounded-md p-2 mb-1"
+    >
+    <p class="text-blue-600 text-sm mb-4">Default: admin</p>
 
-    <button id="signup-btn" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">
+    <!-- Password -->
+    <label class="font-medium block mb-2" for="password-input">Password</label>
+    <input 
+      id="password-input" 
+      type="password" 
+      placeholder="Enter Password" 
+      class="w-full border border-gray-300 rounded-md p-2 mb-1"
+    >
+    <p class="text-blue-600 text-sm mb-4">Default: admin123</p>
+
+    <!-- ✅ Button id ঠিক করেছি -->
+    <button 
+      id="login-btn" 
+      class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+    >
       Sign In
     </button>
 
     <div class="flex items-center my-4">
       <div class="grow border-t border-gray-400"></div>
-      <span class="mx-4 shrink text-gray-500 font-medium">OR</span>
+      <span class="mx-4 shrink text-gray-500 font-medium text-sm">OR</span>
       <div class="grow border-t border-gray-400"></div>
     </div>
 
-    <p class="text-[#64748B] text-center mb-2">Demo Credentials:</p>
-    <div class="bg-[#F8FAFC] p-8 text-center">
-      <div>
-        <p><span class="font-bold">Username:</span> admin</p>
-        <p><span class="font-bold">Password:</span> admin123</p>
-      </div>
-</div>
+    <p class="text-[#64748B] text-center mb-2 text-sm">Demo Credentials:</p>
+    <div class="bg-[#F8FAFC] p-4 rounded-md text-center text-sm">
+      <p><span class="font-bold">Username:</span> admin</p>
+      <p><span class="font-bold">Password:</span> admin123</p>
+    </div>
 
-</div>
+  </div>
 
-
-
-
-
-  <!-- javascript link -->
+  <!-- JavaScript link -->
   <script src="js/login.js"></script>
 
 </body>

@@ -1,21 +1,24 @@
-console.log('hello world')
 
-document.getElementById('signup-btn').addEventListener("click", function(){
-    console.log('login button clicked')
+
+document.getElementById('login-btn').addEventListener("click", function() {
+    console.log('Login button clicked');
+    
     const userInput = document.getElementById("user-input");
-    const userName = userInput.value
+    const userName = userInput.value.trim();
+    
     const passwordInput = document.getElementById("password-input");
-    const password = passwordInput.value;
+    const password = passwordInput.value.trim();
 
-    if(userName === 'admin' && password === "admin123"){
-        alert('login successful!!!')
-        window.location.assign("home.html")
-    }
-    else{
-        alert('user not match..!')
+    if (userName === '' || password === '') {
+        alert(' Please fill all fields!');
         return;
     }
 
+    if (userName === 'admin' && password === 'admin123') {
+        alert('Login successful!');
+        window.location.href = 'home.html';
+    } else {
+        alert('Invalid username or password!');
+    }
+});
 
-    
-})
